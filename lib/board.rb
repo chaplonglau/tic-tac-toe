@@ -2,24 +2,26 @@ require 'pry'
 
 class Board
 
-
   attr_accessor :board, :win_condition
 
 
   def initialize
     @board= [["-","-","-"],["-","-","-"],["-","-","-"]]
+    @helpBoard= [["1","2","3"],["4","5","6"],["7","8","9"]]
   end
 
 
-  def print
+  def printHelpBoard
+    @helpBoard.each do |row|
+      p row
+    end
+  end
 
+  def printBoard
     @board.each do |row|
       p row
-      puts 
     end
-
   end
-
 
   def checkWin
     #check row
@@ -50,8 +52,3 @@ class Board
 
 end
 
-bob= Board.new
-
-bob.print
-
-p bob.board[0]
