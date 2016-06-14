@@ -7,7 +7,7 @@ class Player
 
   def initialize(name)
     @name=name
-    @track_record= {"Wins" => 0, "Losses" => 0}
+    @track_record= {"Wins" => 0, "Ties" => 0, "Losses" => 0}
     @@players << self 
   end
 

@@ -1,5 +1,5 @@
 require_relative 'environment.rb'
-
+require 'pry'
 
 #PROMPT NAME 
 
@@ -14,6 +14,7 @@ require_relative 'environment.rb'
     else
       Player.new(name)
     end
+    name
   end
 
   def getInput
@@ -36,7 +37,7 @@ require_relative 'environment.rb'
 
     if (playerInput<=2)
       return gameboard.board[0][playerInput]=="-"
-    elsif playerInput.between?(2,6)
+    elsif playerInput.between?(3,5)
       return gameboard.board[1][playerInput-3]=="-"
     else
       return gameboard.board[2][playerInput-6]=="-"
@@ -48,7 +49,7 @@ require_relative 'environment.rb'
 
     if (playerInput<=2)
       gameboard.board[0][playerInput]=cursor
-    elsif playerInput.between?(2,6)
+    elsif playerInput.between?(3,5)
       gameboard.board[1][playerInput-3]=cursor
     else
       gameboard.board[2][playerInput-6]=cursor
@@ -74,28 +75,55 @@ require_relative 'environment.rb'
         input=rand(0..8)
     end
     makeMove(input,newGame,"O")
-
-
   end
 
 #ACTUALLY RUN THE dang THING
+def play
+  puts "Welcome to TicTacToe" 
+  name=promptName
+  newGame=Board.new
 
-puts "Welcome to TicTacToe" 
-promptName
-newGame=Board.new
+  while(newGame.boardfilled==false)
+    newGame.printBoard
+    playerTurn(newGame)
 
-playerTurn(newGame)
-newGame.printBoard
+    if newGame.checkWin("X")==true
+      newGame.printBoard
+      puts "X WINS"
+      
+      Player.get_players.find{|player| player.name == name}.track_record["Wins"]+=1
+      break
+    end
 
-puts "Computer takes a turn"
-computerTurn(newGame)
-newGame.printBoard
+    newGame.printBoard
+    puts "Computer takes a turn"
+    computerTurn(newGame)
+
+    if newGame.checkWin("O")==true
+      newGame.printBoard
+      puts "O WINS you suck"
+
+      Player.get_players.find{|player| player.name == name}.track_record["Losses"]+=1
+
+      break
+    end
+
+  end
+
+  if (newGame.boardfilled==true)
+    puts "TIE GAME"
+    Player.get_players.find{|player| player.name == name}.track_record["Ties"]+=1
+  end
+
+  puts "GAME FINISHED"
+  p Player.get_players.find{|player| player.name == name}.track_record
+
+  puts "playagain? y/n"
+end
+
+play
 
 #checkWin/ ends move
 
 
 
-
-puts "hi"
-
-Pry.start
