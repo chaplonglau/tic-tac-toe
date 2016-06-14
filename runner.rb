@@ -118,12 +118,23 @@ def play
   puts "GAME FINISHED"
   p Player.get_players.find{|player| player.name == name}.track_record
 
-  puts "playagain? y/n"
+  playAgain
 end
+
+
+def playAgain
+  puts "playagain? y/n"
+  rematch=gets.chomp
+  if rematch=="y"
+    play
+  end
+  puts "PROGRAM BYE BYE"
+  `exit`
+end
+
 
 play
 
-#checkWin/ ends move
 
 
 
