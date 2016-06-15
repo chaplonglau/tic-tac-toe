@@ -7,6 +7,7 @@ class Board
 
   def initialize
     @board= [["-","-","-"],["-","-","-"],["-","-","-"]]
+    #@board= [["X","X","O"],["X","O","O"],["-","O","X"]]
     @helpBoard= [["1","2","3"],["4","5","6"],["7","8","9"]]
   end
 
@@ -83,7 +84,7 @@ class Board
             return false
         end
       end
-      return false
+      return true
     end
 
 end
