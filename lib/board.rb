@@ -23,7 +23,7 @@ class Board
     end
   end
 
-  def checkWin(cursor)
+  * def checkWin(cursor)
     if checkWinRow(cursor)
       return true
     elsif checkWinCol(cursor)
@@ -37,16 +37,16 @@ class Board
     end
   end
 
-  def checkWinRow(cursor)
+  * def checkWinRow(cursor)
     @board.each do |row|
       if (row.all? {|element| element==cursor})
           return true
       end
-    end 
+    end
     return false
   end
 
-  def checkWinCol(cursor)
+  * def checkWinCol(cursor)
     colarray=[]
     for col in 0..2
       for row in 0..2
@@ -60,7 +60,7 @@ class Board
     return false
   end
 
-  def checkWinRightDiag(cursor)
+  * def checkWinRightDiag(cursor)
     colarray=[]
     for row in 0..2
       colarray << @board[row][row]
@@ -71,7 +71,7 @@ class Board
     return false
   end
 
-  def checkWinLeftDiag(cursor)
+  * def checkWinLeftDiag(cursor)
     colarray=[]
     colarray << @board[0][2]
     colarray << @board[1][1]
@@ -83,7 +83,7 @@ class Board
     return false
   end
 
-   def boardfilled
+   * def boardfilled
       @board.each do |row|
         if (row.any? {|element| element=="-"})
             return false

@@ -1,7 +1,7 @@
 require_relative 'environment.rb'
 require 'pry'
 
-#PROMPT NAME 
+#PROMPT NAME
 
 
   def promptName
@@ -9,7 +9,7 @@ require 'pry'
     name=gets.chomp
 
     existing_player = Player.get_players.find { |player| player.name == name }
-    if existing_player 
+    if existing_player
       puts "Welcome back #{existing_player.name}"
     else
       Player.new(name)
@@ -30,7 +30,7 @@ require 'pry'
     end
   end
 
-  
+
   #checks if that specific square is "-"
   def moveValid(input,gameboard)
     playerInput=input-1
@@ -68,7 +68,7 @@ require 'pry'
   end
 
 
-  def computerTurn(newGame)
+  * def computerTurn(newGame)
     input=rand(0..8)
     while ((isInputValid(input) && moveValid(input,newGame))==false)
         #binding.pry
@@ -79,7 +79,7 @@ require 'pry'
 
 #ACTUALLY RUN THE dang THING
 def play
-  puts "Welcome to TicTacToe" 
+  puts "Welcome to TicTacToe"
   name=promptName
   newGame=Board.new
 
@@ -90,7 +90,7 @@ def play
     if newGame.checkWin("X")==true
       newGame.printBoard
       puts "X WINS"
-      
+
       Player.get_players.find{|player| player.name == name}.track_record["Wins"]+=1
       break
     end
