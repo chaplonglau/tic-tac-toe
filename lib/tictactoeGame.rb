@@ -34,16 +34,20 @@ class TicTacToeGame
 
 
     p player.track_record
+    
+    playAgain(player, ipv)
+  end
 
+  def self.playAgain(player, ipv)
     puts "playagain? y/n"
     rematch=gets.chomp
     if rematch=="y"
       play(Board.new, player, ComputerMover.new, ipv)
+    else
+      puts "PROGRAM BYE BYE"
+      `exit`
     end
-    puts "PROGRAM BYE BYE"
-    `exit`
   end
-
 
 
 end
