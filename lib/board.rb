@@ -25,6 +25,7 @@ class Board
 
   def checkWin(cursor)
     checkWinRow(cursor) || checkWinCol(cursor) || checkWinDiag(cursor)
+
   end
 
   def checkWinRow(cursor)
@@ -32,7 +33,7 @@ class Board
       if (row.all? {|element| element==cursor})
           return true
       end
-    end 
+    end
     return false
   end
 
@@ -76,7 +77,7 @@ class Board
     return false
   end
 
-   def boardfilled
+  def boardfilled
       @board.each do |row|
         if (row.any? {|element| element=="-"})
             return false
