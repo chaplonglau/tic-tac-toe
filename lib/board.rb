@@ -24,17 +24,7 @@ class Board
   end
 
   def checkWin(cursor)
-    if checkWinRow(cursor)
-      return true
-    elsif checkWinCol(cursor)
-      return true
-    elsif checkWinRightDiag(cursor)
-      return true
-    elsif checkWinLeftDiag(cursor)
-      return true
-    else
-      return false
-    end
+    checkWinRow(cursor) || checkWinCol(cursor) || checkWinDiag(cursor)
   end
 
   def checkWinRow(cursor)
@@ -55,9 +45,12 @@ class Board
       if (colarray.all? {|element| element==cursor})
           return true
       end
-      colarray=[]
     end
     return false
+  end
+
+  def checkWinDiag(cursor)
+    checkWinRightDiag(cursor) || checkWinLeftDiag(cursor)
   end
 
   def checkWinRightDiag(cursor)

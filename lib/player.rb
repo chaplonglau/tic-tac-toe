@@ -15,4 +15,8 @@ class Player
     @@players
   end
 
+  def self.findPlayer(name)
+    @@players.find {|player| player.name == name }
+  end
+
 end
