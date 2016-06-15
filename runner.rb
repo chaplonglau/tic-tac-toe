@@ -8,11 +8,13 @@ require 'pry'
     puts "What is your name?"
     name=gets.chomp
 
-    existing_player = Player.get_players.find { |player| player.name == name }
+    existing_player = Player.findPlayer(name)
+
     if existing_player 
       puts "Welcome back #{existing_player.name}"
     else
       Player.new(name)
+      puts "Welcome #{name}"
     end
     name
   end
@@ -23,14 +25,9 @@ require 'pry'
   end
 
   def isInputValid(input)
-    if input==0
-      return false
-    else
-      return input.is_a?(Integer) && input.between?(0,10)
-    end
+    input.is_a?(Integer) && input.between?(1,9)
   end
 
-  
   #checks if that specific square is "-"
   def moveValid(input,gameboard)
     playerInput=input-1
