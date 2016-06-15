@@ -7,7 +7,7 @@ class Runner
     welcomer=Welcomer.new
     ipv=InputValidator.new 
     gameBoard=Board.new
-    comp=Computer.new
+    comp=ComputerMover.new
 
     name=welcomer.welcome
     player=Player.findPlayer(name)

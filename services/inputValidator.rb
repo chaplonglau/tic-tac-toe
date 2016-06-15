@@ -1,5 +1,3 @@
-
-
 class InputValidator
 
   def isInputValid(input)

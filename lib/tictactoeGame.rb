@@ -15,7 +15,7 @@ class TicTacToeGame
 
       gameBoard.printBoard
       puts "Computer takes a turn"
-      comp.move(gameBoard)
+      comp.move(gameBoard, ipv)
 
       if gameBoard.checkWin("O")==true
         gameBoard.printBoard
@@ -38,7 +38,7 @@ class TicTacToeGame
     puts "playagain? y/n"
     rematch=gets.chomp
     if rematch=="y"
-      play(Board.new, player, Computer.new, ipv)
+      play(Board.new, player, ComputerMover.new, ipv)
     end
     puts "PROGRAM BYE BYE"
     `exit`
